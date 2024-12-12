@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block contenido %}
+<div class="container mt-5">
+    <h2>Crear Pedido</h2>
+    <form action="{% url 'guardar_pedido' %}" method="post">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label for="direccion_envio">Dirección de Envío:</label>
+            <textarea name="direccion_envio" id="direccion_envio" class="form-control" rows="3" required></textarea>
+        </div>
+        
+        <h3 class="mt-4">Selecciona los productos:</h3>
+        <div class="productos-lista">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for producto in productos %}
+                    <tr>
+                        <td>{{ producto.nombre }}</td>
+                        <td>${{ producto.precio }}</td>
+                        <td>
+                            <input type="number" name="cantidad_{{ producto.id }}" min="0" max="{{ producto.stock }}" value="0" class="form-control">
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-3">Crear Pedido</button>
+    </form>
+</div>
+{% endblock %}

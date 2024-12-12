@@ -1,0 +1,95 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #fdf6f0;
+}
+
+.pedido-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pedido-tabla {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.pedido-tabla th, .pedido-tabla td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.pedido-tabla th {
+    background-color: #ff5722;
+    color: white;
+    font-size: 16px;
+}
+
+.pedido-tabla tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.pedido-tabla tr:hover {
+    background-color: #ffe0b2;
+}
+
+.no-pedidos {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 18px;
+    color: #757575;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 28px;
+    color: #ff5722;
+}
+
+.btn {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #ff5722;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #e64a19;
+}
+
+.btn-danger {
+    background-color: #f44336;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #d32f2f;
+}
+
+.badge {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 12px;
+    color: white;
+}
+
+.badge.pendiente { background-color: #ffc107; }
+.badge.procesado { background-color: #007bff; }
+.badge.enviado { background-color: #17a2b8; }
+.badge.entregado { background-color: #28a745; }
+.badge.cancelado { background-color: #dc3545; }

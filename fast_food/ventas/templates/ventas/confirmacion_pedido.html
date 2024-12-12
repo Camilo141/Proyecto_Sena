@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block contenido %}
+<div class="container mt-5">
+    <h2>Confirmación de Pedido</h2>
+    <p><strong>Cliente:</strong> {{ pedido.cliente.user.username }}</p>
+    <p><strong>Dirección de Envío:</strong> {{ pedido.direccion_envio }}</p>
+    <p><strong>Estado del Pedido:</strong> {{ pedido.estado }}</p>
+    
+    <h4>Detalles del Pedido:</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Precio Unitario</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for detalle in pedido.detalles.all %}
+            <tr>
+                <td>{{ detalle.producto.nombre }}</td>
+                <td>{{ detalle.cantidad }}</td>
+                <td>${{ detalle.producto.precio }}</td>
+                <td>${{ detalle.precio_total }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h4>Total: ${{ pedido.total }}</h4>
+
+    <form action="{% url 'procesar_pago' pedido.id %}" method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary">Confirmar Pedido</button>
+    </form>
+</div>
+{% endblock %}

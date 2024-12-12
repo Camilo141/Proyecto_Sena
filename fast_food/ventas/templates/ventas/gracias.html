@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block contenido %}
+<div class="container mt-5">
+    <h2>¡Gracias por tu compra!</h2>
+    <p>Tu pedido ha sido procesado exitosamente.</p>
+    <p><strong>ID del Pedido:</strong> {{ pedido.id }}</p>
+    <p>Recibirás un correo de confirmación con los detalles de tu pedido.</p>
+
+    <a href="{% url 'home' %}" class="btn btn-primary mt-3">Volver a la Tienda</a>
+</div>
+{% endblock %}

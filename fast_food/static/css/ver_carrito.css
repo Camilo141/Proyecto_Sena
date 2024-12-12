@@ -1,0 +1,112 @@
+/* Contenedor principal */
+.carrito-container {
+    width: 80%;
+    margin: 20px auto;
+    font-family: 'Arial', sans-serif;
+    color: #2c2c2c;
+}
+
+/* Título */
+.titulo {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #d32f2f; /* Rojo vibrante */
+}
+
+/* Tabla de productos */
+.carrito-tabla {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.carrito-tabla th, 
+.carrito-tabla td {
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: center;
+}
+
+.carrito-tabla th {
+    background-color: #e67e22; /* Naranja brillante */
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.carrito-tabla tr:nth-child(even) {
+    background-color: #fff3e0; /* Fondo claro */
+}
+
+.carrito-tabla tr:hover {
+    background-color: #ffe0b2; /* Resaltado suave */
+}
+
+/* Total y botón */
+.total-contenedor {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.total-contenedor p {
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #f57c00; /* Naranja oscuro */
+}
+
+.btn-realizar-pedido {
+    display: inline-block;
+    background-color: #e53935; /* Rojo intenso */
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn-realizar-pedido:hover {
+    background-color: #b71c1c; /* Rojo oscuro */
+    transform: translateY(-2px);
+}
+
+/* Carrito vacío */
+.carrito-vacio {
+    text-align: center;
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #757575; /* Gris medio */
+}
+
+/* Sumador */
+input[type="number"] {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 7px;
+    width: 70px;
+    text-align: center;
+    font-size: 1em;
+    color: #333;
+}
+
+.btn-actualizar {
+    background-color: #fbc02d; /* Amarillo vibrante */
+    color: #fff;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.btn-actualizar:hover {
+    background-color: #ffeb3b; /* Amarillo claro */
+    transform: translateY(-2px);
+}

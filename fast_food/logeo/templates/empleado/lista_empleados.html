@@ -1,0 +1,97 @@
+{% extends 'basempl.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+
+.employee-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.employee-details {
+    margin-bottom: 20px;
+}
+
+.detail-item {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.detail-item strong {
+    font-weight: 600;
+    color: #555;
+}
+
+.submit-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.submit-button:hover {
+    background-color: #45a049;
+}
+
+.no-data {
+    text-align: center;
+    font-size: 18px;
+    color: #777;
+}
+
+</style>
+
+<br>
+<br>
+<br>
+<div class="employee-container">
+    <h1 class="title">Información del Empleado</h1>
+
+    {% if empleado %}
+        <form method="post" class="employee-form">
+            {% csrf_token %}
+            <div class="employee-details">
+                <div class="detail-item">
+                    <strong>Nombre:</strong> {{ empleado.nombre }}
+                </div>
+                <div class="detail-item">
+                    <strong>Cargo:</strong> {{ empleado.get_cargo_display }}
+                </div>
+                <div class="detail-item">
+                    <strong>Teléfono:</strong> {{ form.telefono }}
+                </div>
+                <div class="detail-item">
+                    <strong>Dirección:</strong> {{ form.direccion }}
+                </div>
+                <div class="detail-item">
+                    <strong>Fecha de Contratación:</strong> {{ empleado.fecha_contratacion }}
+                </div>
+            </div>
+            <button type="submit" class="submit-button">Guardar Cambios</button>
+        </form>
+    {% else %}
+        <p class="no-data">No se encontraron datos de empleado relacionados con este usuario.</p>
+    {% endif %}
+</div>
+
+{% endblock %}

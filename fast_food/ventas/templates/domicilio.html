@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Seguimiento de Domicilios</h2>
+
+{% if domicilios %}
+    <ul>
+        {% for domicilio in domicilios %}
+        <li>
+            <p><strong>Pedido ID:</strong> {{ domicilio.pedido.id }}</p>
+            <p><strong>Estado:</strong> {{ domicilio.estado }}</p>
+            <p><strong>Empleado Asignado:</strong> {{ domicilio.empleado_nombre }}</p>
+            <p><strong>Fecha de Entrega Estimada:</strong> {{ domicilio.fecha_entrega|date:"d M Y H:i" }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No tienes domicilios en curso.</p>
+{% endif %}
+{% endblock %}

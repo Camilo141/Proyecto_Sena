@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/ver_carrito.css' %}">
+{% endblock %}
+
+{% block contenido %}
+<div class="carrito-container">
+    <h1 class="titulo">Carrito de Compras</h1>
+
+    {% if detalles_pedido %}
+        <form method="post" action="{% url 'actualizar_carrito' %}">
+            {% csrf_token %}
+            <table class="carrito-tabla">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Precio Unitario</th>
+                        <th>Total</th>
+                        <th>Actualizar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for detalle in detalles_pedido %}
+                        <tr>
+                            <td>{{ detalle.producto.nombre }}</td>
+                            <td>
+                                <input type="number" name="cantidad_{{ detalle.id }}" value="{{ detalle.cantidad }}" min="1" style="width: 60px; text-align: center;">
+                            </td>
+                            <td>$ {{ detalle.precio }}</td>
+                            <td>$ {{ detalle.subtotal }}</td>
+                            <td>
+                                <button type="submit" class="btn-actualizar" name="detalle_id" value="{{ detalle.id }}">Actualizar</button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </form>
+
+        <div class="total-contenedor">
+            <p><strong>Total del Pedido:</strong> $ {{ pedido.calcular_total }}</p>
+            <a href="{% url 'realizar_pedido' pedido.id %}" class="btn-realizar-pedido">Realizar Pedido</a>
+        </div>
+    {% else %}
+        <p class="carrito-vacio">Tu carrito está vacío.</p>
+    {% endif %}
+</div>
+{% endblock %}
+

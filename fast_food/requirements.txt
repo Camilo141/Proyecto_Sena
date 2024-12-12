@@ -1,0 +1,5 @@
+
+pip install django-import-export[all]
+#pip install xhtml2pdf
+pip install django-admin-interface
+pip install WeasyPrint

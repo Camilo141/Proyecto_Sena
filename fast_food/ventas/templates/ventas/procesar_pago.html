@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block contenido %}
+<div class="container mt-5">
+    <h2>Realizar Pago</h2>
+    <p><strong>Total a pagar:</strong> ${{ pedido.total }}</p>
+
+    <form action="{% url 'confirmar_pago' pedido.id %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="metodo_pago">Método de Pago:</label>
+            <select name="metodo_pago" id="metodo_pago" class="form-control">
+                <option value="Tarjeta">Tarjeta</option>
+                <option value="Efectivo">Efectivo</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-success mt-3">Confirmar Pago</button>
+    </form>
+</div>
+{% endblock %}

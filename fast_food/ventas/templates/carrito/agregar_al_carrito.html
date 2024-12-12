@@ -1,0 +1,15 @@
+
+
+<body>
+    <h1>Agregar {{ producto.nombre }} al carrito</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Agregar al carrito</button>
+    </form>
+
+    <a href="{% url 'ver_carrito' %}">Ver carrito</a>
+</body>
+</html>
+

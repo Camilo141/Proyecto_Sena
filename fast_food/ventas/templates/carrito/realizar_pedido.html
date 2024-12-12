@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmación de Pedido</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/realizarpedido.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="container">
+        <h1>Confirmación de Pedido</h1>
+
+        <h2>Detalles del Pedido</h2>
+        <p><strong>Cliente:</strong> {{ pedido.cliente }}</p>
+        <p><strong>Fecha del Pedido:</strong> {{ pedido.fecha_pedido|date:"d/m/Y H:i" }}</p>
+        
+        <form method="post">
+            {% csrf_token %}
+            <label for="direccion_envio">Dirección de Envío:</label>
+            {{ form.direccion_envio }}
+
+            <label for="telefono">Teléfono:</label>
+            {{ form.telefono }}
+
+            <label for="ciudad">Ciudad:</label>
+            {{ form.ciudad }}
+
+            <button type="submit">Confirmar Pedido</button>
+        </form>
+
+        <p class="total"><strong>Total a Pagar:</strong> COP {{ pedido.calcular_total }}</p>
+
+        <a class="back-link" href="{% url 'ver_carrito' %}">← Regresar al Carrito</a>
+    </div>
+</body>
+</html>

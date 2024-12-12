@@ -1,0 +1,44 @@
+{% extends 'basempl.html' %}
+
+{% load static %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/domicilio.css' %}">
+{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Lista de Asistencias</h2>
+    {% if asistencias %}
+        <table class="pedido-tabla">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Fecha</th>
+                    <th>Hora de Entrada</th>
+                    <th>Hora de Salida</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for asistencia in asistencias %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ asistencia.fecha }}</td>
+                    <td>{{ asistencia.hora_entrada }}</td>
+                    <td>
+                        {% if asistencia.hora_salida %}
+                            {{ asistencia.hora_salida }}
+                        {% else %}
+                            <span class="badge warning">-</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <div class="no-pedidos text-center">
+            <p>No hay asistencias para mostrar.</p>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

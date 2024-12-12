@@ -1,0 +1,32 @@
+{% extends 'basempl.html' %}
+{% load static %}
+{% block content %}
+<h1>Asistencias de {{ empleado.nombre }}</h1>
+
+{% if asistencias_con_detalles %}
+    <table>
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Hora de Entrada</th>
+                <th>Hora de Salida</th>
+                <th>Horas Trabajadas</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for asistencia in asistencias_con_detalles %}
+                <tr>
+                    <td>{{ asistencia.fecha }}</td>
+                    <td>{{ asistencia.hora_entrada }}</td>
+                    <td>{{ asistencia.hora_salida }}</td>
+                    <td>{{ asistencia.horas_trabajadas }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No hay asistencias registradas para este empleado.</p>
+{% endif %}
+
+
+{% endblock %}

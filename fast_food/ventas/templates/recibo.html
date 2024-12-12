@@ -1,0 +1,129 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recibo de Venta</title>
+</head>
+<body>
+    <style>
+         
+body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            background-color: #f8f8f8;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        h2, h3 {
+            color: #e74c3c; /* Color rojo típico de comida rápida */
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .header img {
+            max-width: 150px;
+        }
+        .company-info {
+            font-size: 14px;
+            color: #34495e;
+            text-align: right;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #e74c3c; /* Rojo para el encabezado */
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .total {
+            font-size: 18px;
+            font-weight: bold;
+            color: #e74c3c;
+            text-align: right;
+            margin-top: 20px;
+        }
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 12px;
+            color: #7f8c8d;
+        }
+        .footer p {
+            margin: 5px;
+        }
+
+    </style>
+
+    <div class="header">
+        <!-- Agregar el logo de la tienda -->
+        <img src="{% static 'img/Logo IA.png' %}" alt="Logo de El Barril Santafereño" class="logo">
+        <div class="company-info">
+            <p><strong>EL BARRIL SANTAFEREÑO</strong></p>
+            <p>Dirección: calle 128b#45b-28, Bogotá, Colombia</p>
+            <p>Teléfono: 3204570146</p>
+        </div>
+    </div>
+
+    <h1>Recibo de Venta</h1>
+
+    <p><strong>ID Venta:</strong> {{ venta.id }}</p>
+    <p><strong>Fecha de Pago:</strong> {{ venta.fecha_pago }}</p>
+    <p><strong>Monto Total:</strong> ${{ venta.monto }}</p>
+    <p><strong>Método de Pago:</strong> {{ venta.metodo_pago }}</p>
+
+    <h2>Detalles del Pedido</h2>
+    <p><strong>ID Pedido:</strong> {{ pedido.id }}</p>
+    <p><strong>Cliente:</strong> {{ pedido.cliente }}</p>
+    <p><strong>Dirección:</strong> {{ pedido.direccion_envio }}</p>
+    <p><strong>Ciudad:</strong> {{ pedido.ciudad }}</p>
+    <p><strong>Teléfono:</strong> {{ pedido.telefono }}</p>
+
+    <h3>Productos</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Precio Unitario</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for detalle in detalles %}
+            <tr>
+                <td>{{ detalle.producto.nombre }}</td>
+                <td>{{ detalle.cantidad }}</td>
+                <td>${{ detalle.precio }}</td>
+                <td>${{ detalle.subtotal }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="total">
+        <p><strong>Total Pedido:</strong> ${{ pedido.total }}</p>
+    </div>
+
+    <div class="footer">
+        <p>Gracias por tu compra. ¡Te esperamos pronto!</p>
+        <p>Visítanos en www.fast_food.com</p>
+    </div>
+
+</body>
+</html>

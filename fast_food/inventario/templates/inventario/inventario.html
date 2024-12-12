@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block contenido %}
+
+<link rel="stylesheet" href="{% static 'css/productoss.css' %}">
+
+<div id="contenido">
+    <div class="productos">
+        {% for product in products %}
+        <div class="producto">
+            <div class="imagen-producto">
+                <img src="{{ product.Foto.url }}" alt="{{ product.nombre }}">
+            </div>
+            <div class="detalles">
+                <h5>{{ product.nombre }}</h5>
+                <a>{{ product.categoria.nombre }}</a>
+                <p>{{ product.descripcion }}</p>
+                <h3>Precio: ${{ product.precio }}</h3>
+                <form action="{% url 'agregar_al_carrito' product.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn-agregar">+</button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}
